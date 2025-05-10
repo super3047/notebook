@@ -5,39 +5,39 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-### 步骤1
+### 步骤2
 df = pd.read_csv('fortune500.csv')
 df.head()
 ![image](https://github.com/user-attachments/assets/2fac0c95-1e41-4b82-8043-0301070dd286)
-### 步骤1
+### 步骤3
 df.tail()
 ![image](https://github.com/user-attachments/assets/bdabb6b9-9cd7-4fd0-8f3c-04dfd0760466)
-### 步骤1
+### 步骤4
 df.columns = ['year', 'rank', 'company', 'revenue', 'profit']
 len(df)
 ![image](https://github.com/user-attachments/assets/87b3ee7c-c8fe-495a-99e3-f072188dfd41)
-### 步骤1
+### 步骤5
 df.dtypes
 ![image](https://github.com/user-attachments/assets/aa18c3e0-08a3-446b-8766-95506e2025d6)
-### 步骤1
+### 步骤6
 non_numberic_profits = df.profit.str.contains('[^0-9.-]')
 df.loc[non_numberic_profits].head()
 ![image](https://github.com/user-attachments/assets/2b8e4bb9-99d0-479f-8c12-5a16681bcf02)
-### 步骤1
+### 步骤7
 len(df.profit[non_numberic_profits])
 ![image](https://github.com/user-attachments/assets/ab45566c-0116-4c1b-bd8d-f3e57100b666)
-### 步骤1
+### 步骤8
 bin_sizes, _, _ = plt.hist(df.year[non_numberic_profits], bins=range(1955, 2006))
 ![image](https://github.com/user-attachments/assets/4b1f2d00-d978-45d1-9e95-a00704087331)
-### 步骤1
+### 步骤9
 df = df.loc[~non_numberic_profits]
 df.profit = df.profit.apply(pd.to_numeric)
 len(df)
 ![image](https://github.com/user-attachments/assets/266bbb1e-0f62-4d36-9daa-4765031c04a0)
-### 步骤1
+### 步骤10
 df.dtypes
 ![image](https://github.com/user-attachments/assets/a78e6290-f402-4d77-9259-74c9b275383a)
-### 步骤1
+### 步骤11
 group_by_year = df.loc[:, ['year', 'revenue', 'profit']].groupby('year')
 avgs = group_by_year.mean()
 x = avgs.index
@@ -50,12 +50,12 @@ def plot(x, y, ax, title, y_label):
 fig, ax = plt.subplots()
 plot(x, y1, ax, 'Increase in mean Fortune 500 company profits from 1955 to 2005', 'Profit (millions)')
 ![image](https://github.com/user-attachments/assets/a1216f4e-8e6d-48b3-a48e-817a6a6ab597)
-### 步骤1
+### 步骤12
 y2 = avgs.revenue
 fig, ax = plt.subplots()
 plot(x, y2, ax, 'Increase in mean Fortune 500 company revenues from 1955 to 2005', 'Revenue (millions)')
 ![image](https://github.com/user-attachments/assets/b836eb6e-d9ff-4c70-a26a-561d6d434362)
-### 步骤1
+### 步骤13
 def plot_with_std(x, y, stds, ax, title, y_label):
     ax.fill_between(x, y - stds, y + stds, alpha=0.2)
     plot(x, y, ax, title, y_label)
