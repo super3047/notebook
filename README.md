@@ -107,4 +107,5 @@ sorted_list = selection_sort(unsorted_list.copy())  # 使用copy避免修改原�
 print("排序后数组:", sorted_list)
 
 ![image](https://github.com/user-attachments/assets/460d1447-3360-4174-a94a-45c8592759c5)
-
+# 将利润和收入结合在一张图里
+![image](https://github.com/user-attachments/assets/5a481114-563e-4a10-8f8d-8c58072ab341)
